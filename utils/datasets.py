@@ -61,6 +61,10 @@ class ListDataset(Dataset):
         with open(list_path, "r") as file:
             self.img_files = file.readlines()
 
+        # 以下两行新增
+        self.data_root = os.path.dirname(list_path)
+        self.img_files = [self.data_root + suffix for suffix in self.img_files]
+        
         self.label_files = [
             path.replace("images", "labels").replace(".png", ".txt").replace(".jpg", ".txt")
             for path in self.img_files
