@@ -318,4 +318,4 @@ def build_targets(pred_boxes, pred_cls, target, anchors, ignore_thres):
     iou_scores[b, best_n, gj, gi] = bbox_iou(pred_boxes[b, best_n, gj, gi], target_boxes, x1y1x2y2=False)
 
     tconf = obj_mask.float()
-    return iou_scores, class_mask, obj_mask, noobj_mask, tx, ty, tw, th, tcls, tconf
+    return iou_scores, class_mask.bool(), obj_mask.bool(), noobj_mask.bool(), tx, ty, tw, th, tcls, tconf
